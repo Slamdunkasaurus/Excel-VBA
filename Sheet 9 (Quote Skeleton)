@@ -1,0 +1,342 @@
+Public Sub BASEBOAT_Click()
+'Button that pulls Data from A Data Base
+BaseBoatUserForm.Show
+End Sub
+
+
+Private Sub CommandButton16_Click()
+
+End Sub
+
+Private Sub CommandButton1_Click()
+
+End Sub
+
+Private Sub CommandButton2_Click()
+'Set ThisWorkbook.TempCollection = New Collection
+Set ThisWorkbook.PrintColl = New Collection
+Set PropulsionColl = New Collection
+Set AccommodationsColl = New Collection
+Set ArmamentsColl = New Collection
+Set CoatingColl = New Collection
+Set CommercialColl = New Collection
+Set DocumentationColl = New Collection
+Set ElectricalColl = New Collection
+Set ElectronicsColl = New Collection
+Set FireFightingColl = New Collection
+Set OutfittingColl = New Collection
+Set PackingColl = New Collection
+Set ServicesColl = New Collection
+Set SparesColl = New Collection
+Set TestingColl = New Collection
+Set TrailersColl = New Collection
+Set AccessableColl = New Collection
+Set AdditionalColl = New Collection
+Set CustomerSuppliedColl = New Collection
+Set CustomColl = New Collection
+
+End Sub
+
+Private Sub CommandButton3_Click()
+Call FindSelectedBaseBoat
+End Sub
+
+Private Sub CommandButton4_Click()
+
+End Sub
+
+
+Private Sub Propulsion_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "Propulsions"
+ThisWorkbook.ButtonRow = Accommodations.TopLeftCell.Row
+
+UserForm1.Show
+
+End Sub
+
+Public Sub Accommodations_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "Accommodations"
+ThisWorkbook.ButtonRow = Armament.TopLeftCell.Row
+
+UserForm1.Show
+
+End Sub
+
+Private Sub Armament_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "Armaments"
+ThisWorkbook.ButtonRow = Coating.TopLeftCell.Row
+
+UserForm1.Show
+
+End Sub
+
+Private Sub Coating_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "CoatingAndMarkings"
+ThisWorkbook.ButtonRow = Commercial.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub Commercial_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "CommercialAndHeavyDuty"
+ThisWorkbook.ButtonRow = Documentation.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub Documentation_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "Documentation"
+ThisWorkbook.ButtonRow = Electrical.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub Electrical_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "ElectricalAndLighting"
+ThisWorkbook.ButtonRow = Electronics.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub Electronics_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "ElectronicsAndNavigation"
+ThisWorkbook.ButtonRow = FireFighting.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub FireFighting_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "FireFighting"
+ThisWorkbook.ButtonRow = Outfitting.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub Outfitting_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "Outfitting"
+ThisWorkbook.ButtonRow = Packing.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub Packing_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "PackingAndDelivery"
+ThisWorkbook.ButtonRow = Services.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub Services_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "Services"
+ThisWorkbook.ButtonRow = Spares.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub Spares_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "SparesAndParts"
+ThisWorkbook.ButtonRow = Testing.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub Testing_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "TestingAndTraining"
+ThisWorkbook.ButtonRow = Trailers.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub Trailers_Click()
+'Button that pulls Data from A Data Base
+ThisWorkbook.WhichButton = "TrailersAndCradles"
+ThisWorkbook.ButtonRow = AdditonalDetails.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub AdditionalDetails_Click()
+ThisWorkbook.WhichButton = "AdditionalDetails"
+ThisWorkbook.ButtonRow = CustomerSuppliedEquipment.TopLeftCell.Row
+
+UserForm1.Show
+
+End Sub
+
+Private Sub CustomerSuppliedEquipment_Click()
+ThisWorkbook.WhichButton = "CustomerSuppliedEquipment"
+ThisWorkbook.ButtonRow = CustomRequest.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub CustomRequest_Click()
+ThisWorkbook.WhichButton = "CustomRequest"
+ThisWorkbook.ButtonRow = CommandButton1.TopLeftCell.Row
+
+UserForm1.Show
+End Sub
+
+Private Sub ValidatePrint_Click()
+
+
+Call AddToPrintColl
+
+
+For i = 1 To ThisWorkbook.PrintColl.Count
+    'MsgBox (ThisWorkbook.PrintColl(i))
+    Sheets("Print").Cells(i, "A").Value = ThisWorkbook.PrintColl(i)
+    Next i
+
+
+End Sub
+
+Private Sub AddToPrintColl()
+
+ThisWorkbook.PrintColl.Add ThisWorkbook.BaseBoatSelected
+
+Dim i As Long
+For i = 1 To ThisWorkbook.PropulsionColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.PropulsionColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.ArmamentsColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.ArmamentsColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.CoatingColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.CoatingColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.CommercialColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.CommercialColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.DocumentationColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.DocumentationColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.ElectricalColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.ElectricalColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.ElectronicsColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.ElectronicsColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.FireFightingColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.FireFightingColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.OutfittingColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.OutfittingColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.PackingColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.PackingColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.ServicesColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.ServicesColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.SparesColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.SparesColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.TestingColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.TestingColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.TrailersColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.TrailersColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.AdditionalColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.AdditionalColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.CustomerSuppliedColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.CustomerSuppliedColl(i)
+Next i
+
+For i = 1 To ThisWorkbook.CustomColl.Count
+   ThisWorkbook.PrintColl.Add ThisWorkbook.CustomColl(i)
+Next i
+
+End Sub
+
+Public Sub FindButtonRow()
+
+If ThisWorkbook.WhichButton = "Propulsions" Then
+    ThisWorkbook.ButtonRow = Accommodations.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "Accommodations" Then
+    ThisWorkbook.ButtonRow = Armament.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "Armaments" Then
+    ThisWorkbook.ButtonRow = Coating.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "CoatingAndMarkings" Then
+    ThisWorkbook.ButtonRow = Commercial.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "CommericalAndHeavyDuty" Then
+    ThisWorkbook.ButtonRow = Documentation.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "Documentation" Then
+    ThisWorkbook.ButtonRow = Electrical.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "ElectricalAndLighting" Then
+    ThisWorkbook.ButtonRow = Electronics.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "ElectronicsAndNavigation" Then
+    ThisWorkbook.ButtonRow = FireFighting.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "FireFighting" Then
+    ThisWorkbook.ButtonRow = Outfitting.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "OutfittingAndEquipment" Then
+    ThisWorkbook.ButtonRow = Packing.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "PackingAndDelivery" Then
+    ThisWorkbook.ButtonRow = Services.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "Services" Then
+    ThisWorkbook.ButtonRow = Spares.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "SparesAndParts" Then
+    ThisWorkbook.ButtonRow = Testing.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "TestingAndTraining" Then
+    ThisWorkbook.ButtonRow = Trailers.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "TrailersAndCradles" Then
+    ThisWorkbook.ButtonRow = AdditionalDetails.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "AdditionalDetails" Then
+    ThisWorkbook.ButtonRow = CustomerSuppliedEquipment.TopLeftCell.Row
+ElseIf ThisWorkbook.WhichButton = "CustomerSuppliedEquipment" Then
+    ThisWorkbook.ButtonRow = CustomRequest.TopLeftCell.Row
+Else
+    ThisWorkbook.ButtonRow = CommandButton1.TopLeftCell.Row
+
+End If
+End Sub
+
+
+Public Sub FindSelectedBaseBoat()
+'ThisWorkbook.BaseBoatSelected = ""
+'MsgBox (ThisWorkbook.BaseBoatSelected)
+'MsgBox (Range("D21").Value)
+
+If IsEmpty(ThisWorkbook.BaseBoatSelected) = True Or ThisWorkbook.BaseBoatSelected = "" Then
+    'MsgBox (Range("D21").Value)
+    ThisWorkbook.BaseBoatSelected = Range("B21").Value
+End If
+
+'MsgBox (ThisWorkbook.BaseBoatSelected)
+
+End Sub
+
+Private Sub ResetButton_Click()
+
+End Sub
