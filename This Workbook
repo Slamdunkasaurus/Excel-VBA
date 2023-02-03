@@ -1,0 +1,124 @@
+
+'Temp Collections
+
+Public PropulsionColl As New Collection
+
+Public AccommodationsColl As New Collection
+
+Public ArmamentsColl As New Collection
+
+Public CoatingColl As New Collection
+
+Public CommercialColl As New Collection
+
+Public DocumentationColl As New Collection
+
+Public ElectricalColl As New Collection
+
+Public ElectronicsColl As New Collection
+
+Public FireFightingColl As New Collection
+
+Public OutfittingColl As New Collection
+
+Public PackingColl As New Collection
+
+Public ServicesColl As New Collection
+
+Public SparesColl As New Collection
+
+Public TestingColl As New Collection
+
+Public TrailersColl As New Collection
+
+Public AccessableColl As New Collection
+
+Public AdditionalColl As New Collection
+
+Public CustomerSuppliedColl As New Collection
+
+Public CustomColl As New Collection
+
+
+
+'RowColl
+
+Public RowColl As New Collection
+
+Public PropulsionRowColl As New Collection
+
+Public AccommodationsRowColl As New Collection
+
+Public ArmamentsRowColl As New Collection
+
+Public CoatingRowColl As New Collection
+
+Public CommercialRowColl As New Collection
+
+Public DocumentationRowColl As New Collection
+
+Public ElectricalRowColl As New Collection
+
+Public ElectronicsRowColl As New Collection
+
+Public FireFightingRowColl As New Collection
+
+Public OutfittingRowColl As New Collection
+
+Public PackingRowColl As New Collection
+
+Public ServicesRowColl As New Collection
+
+Public SparesRowColl As New Collection
+
+Public TestingRowColl As New Collection
+
+Public TrailersRowColl As New Collection
+
+Public AccessableRowColl As New Collection
+
+Public AdditionalRowColl As New Collection
+
+Public CustomerSuppliedRowColl As New Collection
+
+Public CustomRowColl As New Collection
+
+
+'Public Variables
+
+Public BoatCol As String
+
+Public TempCollection As New Collection
+
+Public WhichButton As String
+
+Public ColumnLetter As String
+
+Public tempColLetter As String
+
+Public ButtonRow As Integer
+
+Public BaseBoatSelected As String
+
+Public LastRowInTable As Integer
+
+Public FirstRowInTable As Integer
+
+Public PrintColl As New Collection
+
+Dim PartArray() As String
+
+'Methods
+
+Public Sub PartArrayCreation()
+PartArray = Array("Propulsions", "Accommodations", "Armaments", "CoatingAndMarking", "CommericalAndHeavyDuty", "Documentation", "ElectricalAndLighting", "ElectronicsAndNavigation", "FireFighting", "OutfittingAndEquipment", "PackingAndDelivery", "Serives", "SparesAndParts", "TestingAndTraining", "TrailersAndCradles")
+End Sub
+
+
+
+'Notes
+'Baseboat stores all base stuff, array?
+'display all the cost descriptions
+'replace baseboat
+'Fix add/subtract
+'Verfication if still slow
