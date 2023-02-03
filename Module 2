@@ -1,0 +1,18 @@
+Sub Macro1()
+'
+' Macro1 Macro
+'
+
+'
+    Rows("21:21").Select
+    Range("B21").Activate
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+End Sub
+Sub Macro2()
+'
+' Macro2 Macro
+'
+
+'
+    Selection.Delete Shift:=xlUp
+End Sub
