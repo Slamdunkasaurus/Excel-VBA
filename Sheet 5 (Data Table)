@@ -1,0 +1,261 @@
+Public Sub BoatCompatiablity()
+
+
+BASEBOAT = ThisWorkbook.BaseBoatSelected
+Table = ThisWorkbook.WhichButton
+
+
+Set ThisWorkbook.TempCollection = New Collection
+
+Call BoatColLink
+
+
+'Call FindTheFirstRow(ThisWorkbook.WhichButton)
+Call FindFirstRow
+FirstRow = ThisWorkbook.FirstRowInTable
+
+'Call FindTheLastRow(ThisWorkbook.WhichButton)
+Call FindLastRow
+LastRow = ThisWorkbook.LastRowInTable
+
+'BoatCol should be letter coressponding to the baseboat
+'MsgBox (ThisWorkbook.BoatCol)
+
+For i = FirstRow To LastRow
+    If Cells(i, ThisWorkbook.BoatCol).Value = "X" Then
+        ThisWorkbook.TempCollection.Add Cells(i, "C").Value
+        End If
+Next i
+
+'MsgBox ("Boat Compatiablity Worked")
+
+End Sub
+
+Public Sub BoatColLink()
+
+Dim tempRow As Integer
+Dim tempCol As String
+
+BASEBOAT = ThisWorkbook.BaseBoatSelected
+'Call FindFirstRow("BaseBoats")
+'Call FindLastRow("BaseBoats")
+
+
+FirstRow = 3
+LastRow = 16
+
+
+
+
+For i = FirstRow To LastRow
+        If BASEBOAT = Sheets("Data Table").Cells(i, "C").Value Then
+        tempRow = i
+        Exit For
+        End If
+Next i
+
+
+For j = 7 To 14
+    Call Number2Letter(j)
+    tempCol = ThisWorkbook.tempColLetter
+    'MsgBox ("This is tempCol: " + tempCol)
+    If Sheets("Data Table").Cells(tempRow, tempCol).Value = "X" Then
+        ThisWorkbook.BoatCol = tempCol
+        Exit For
+        End If
+    Next j
+
+
+End Sub
+
+Sub Number2Letter(ColumnNum)
+'Convert a given number into it's corresponding Letter Reference
+
+'Convert To Column Letter
+  ColumnLetter = Split(Cells(1, ColumnNum).Address, "$")(1)
+  
+  ThisWorkbook.tempColLetter = ColumnLetter
+  
+  'Display Result
+  'MsgBox "Column " & ColumnNum & " = Column " & ColumnLetter
+  
+End Sub
+
+Sub PrintTempCollection()
+
+'MsgBox (ThisWorkbook.TempCollection.Count)
+
+For i = 1 To ThisWorkbook.TempCollection.Count
+    MsgBox (ThisWorkbook.TempCollection(i))
+    Next i
+
+End Sub
+
+Private Sub CommandButton1_Click()
+
+ThisWorkbook.WhichButton = "Propulsions"
+ThisWorkbook.BaseBoatSelected = "Hammer Head"
+
+Call BoatCompatiablity
+
+MsgBox (ThisWorkbook.BoatCol)
+
+Call PrintTempCollection
+
+MsgBox ("Finished")
+
+End Sub
+
+Sub ActiveCellColumnLetter()
+MsgBox Split(ActiveCell.Address, "$")(1)
+End Sub
+
+Private Sub CommandButton2_Click()
+
+
+ThisWorkbook.WhichButton = "Accomodations"
+ThisWorkbook.BaseBoatSelected = "Hammer Head"
+
+Call BoatCompatiablity
+
+MsgBox (ThisWorkbook.BoatCol)
+
+Call PrintTempCollection
+
+MsgBox ("Finished")
+MsgBox (FirstRow)
+MsgBox (LastRow)
+
+
+
+End Sub
+
+
+Sub FindTheLastRow(tableName)
+
+Dim tblInv As ListObject
+Set tblInv = ThisWorkbook.Sheets("Data Table").ListObjects(tableName)
+Dim LastRow As Long
+
+ThisWorkbook.LastRowInTable = tblInv.Range.Rows(tblInv.Range.Rows.Count).Row
+
+'MsgBox (ThisWorkbook.LastRowInTable)
+
+
+End Sub
+
+Sub FindTheFirstRow(tableName)
+
+Dim tblInv As ListObject
+Set tblInv = ThisWorkbook.Sheets("Data Table").ListObjects(tableName)
+Dim FirstRow As Long
+
+ThisWorkbook.FirstRowInTable = tblInv.Range.Row + 1
+
+'MsgBox (ThisWorkbook.FirstRowInTable)
+
+
+End Sub
+
+Private Sub CommandButton3_Click()
+
+ThisWorkbook.WhichButton = "Propulsions"
+
+Call FindLastRow
+
+MsgBox (ThisWorkbook.LastRowInTable)
+
+
+End Sub
+
+Private Sub CommandButton4_Click()
+ThisWorkbook.WhichButton = "AdditionalDetails"
+Call FindTheLastRow(ThisWorkbook.WhichButton)
+End Sub
+
+Private Sub CommandButton5_Click()
+ThisWorkbook.WhichButton = "AdditionalDetails"
+Call FindTheFirstRow(ThisWorkbook.WhichButton)
+End Sub
+
+Public Sub FindLastRow()
+If ThisWorkbook.WhichButton = "Propulsions" Then
+    ThisWorkbook.LastRowInTable = 31
+ElseIf ThisWorkbook.WhichButton = "Accommodations" Then
+    ThisWorkbook.LastRowInTable = 45
+ElseIf ThisWorkbook.WhichButton = "Armaments" Then
+    ThisWorkbook.LastRowInTable = 54
+ElseIf ThisWorkbook.WhichButton = "CoatingAndMarkings" Then
+    ThisWorkbook.LastRowInTable = 64
+ElseIf ThisWorkbook.WhichButton = "CommericalAndHeavyDuty" Then
+    ThisWorkbook.LastRowInTable = 74
+ElseIf ThisWorkbook.WhichButton = "Documentation" Then
+    ThisWorkbook.LastRowInTable = 84
+ElseIf ThisWorkbook.WhichButton = "ElectricalAndLighting" Then
+    ThisWorkbook.LastRowInTable = 94
+ElseIf ThisWorkbook.WhichButton = "ElectronicsAndNavigation" Then
+    ThisWorkbook.LastRowInTable = 104
+ElseIf ThisWorkbook.WhichButton = "FireFighting" Then
+    ThisWorkbook.LastRowInTable = 114
+ElseIf ThisWorkbook.WhichButton = "OutfittingAndEquipment" Then
+    ThisWorkbook.LastRowInTable = 124
+ElseIf ThisWorkbook.WhichButton = "PackingAndDelivery" Then
+    ThisWorkbook.LastRowInTable = 134
+ElseIf ThisWorkbook.WhichButton = "Services" Then
+    ThisWorkbook.LastRowInTable = 144
+ElseIf ThisWorkbook.WhichButton = "SparesAndParts" Then
+    ThisWorkbook.LastRowInTable = 154
+ElseIf ThisWorkbook.WhichButton = "TestingAndTraining" Then
+    ThisWorkbook.LastRowInTable = 164
+ElseIf ThisWorkbook.WhichButton = "TrailersAndCradles" Then
+    ThisWorkbook.LastRowInTable = 174
+ElseIf ThisWorkbook.WhichButton = "AdditionalDetails" Then
+    ThisWorkbook.LastRowInTable = 184
+ElseIf ThisWorkbook.WhichButton = "CustomerSuppliedEquipment" Then
+    ThisWorkbook.LastRowInTable = 194
+Else
+    ThisWorkbook.LastRowInTable = 204
+
+End If
+End Sub
+
+Public Sub FindFirstRow()
+If ThisWorkbook.WhichButton = "Propulsions" Then
+    ThisWorkbook.FirstRowInTable = 18
+ElseIf ThisWorkbook.WhichButton = "Accommodations" Then
+    ThisWorkbook.FirstRowInTable = 33
+ElseIf ThisWorkbook.WhichButton = "Armaments" Then
+    ThisWorkbook.FirstRowInTable = 47
+ElseIf ThisWorkbook.WhichButton = "CoatingAndMarkings" Then
+    ThisWorkbook.FirstRowInTable = 56
+ElseIf ThisWorkbook.WhichButton = "CommericalAndHeavyDuty" Then
+    ThisWorkbook.FirstRowInTable = 66
+ElseIf ThisWorkbook.WhichButton = "Documentation" Then
+    ThisWorkbook.FirstRowInTable = 76
+ElseIf ThisWorkbook.WhichButton = "ElectricalAndLighting" Then
+    ThisWorkbook.FirstRowInTable = 86
+ElseIf ThisWorkbook.WhichButton = "ElectronicsAndNavigation" Then
+    ThisWorkbook.FirstRowInTable = 96
+ElseIf ThisWorkbook.WhichButton = "FireFighting" Then
+    ThisWorkbook.FirstRowInTable = 106
+ElseIf ThisWorkbook.WhichButton = "OutfittingAndEquipment" Then
+    ThisWorkbook.FirstRowInTable = 116
+ElseIf ThisWorkbook.WhichButton = "PackingAndDelivery" Then
+    ThisWorkbook.FirstRowInTable = 126
+ElseIf ThisWorkbook.WhichButton = "Services" Then
+    ThisWorkbook.FirstRowInTable = 136
+ElseIf ThisWorkbook.WhichButton = "SparesAndParts" Then
+    ThisWorkbook.FirstRowInTable = 146
+ElseIf ThisWorkbook.WhichButton = "TestingAndTraining" Then
+    ThisWorkbook.FirstRowInTable = 156
+ElseIf ThisWorkbook.WhichButton = "TrailersAndCradles" Then
+    ThisWorkbook.FirstRowInTable = 166
+ElseIf ThisWorkbook.WhichButton = "AdditionalDetails" Then
+    ThisWorkbook.FirstRowInTable = 176
+ElseIf ThisWorkbook.WhichButton = "CustomerSuppliedEquipment" Then
+    ThisWorkbook.FirstRowInTable = 186
+Else
+    ThisWorkbook.FirstRowInTable = 196
+
+End If
+End Sub
