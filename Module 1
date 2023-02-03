@@ -1,0 +1,47 @@
+Sub PullDataCoatingMarking()
+'Button that pulls Data from A Data Base
+'Temp MsgBox
+MsgBox "This Button will show all the Coating & Markings option with the item descriptions and cost. It will only show which are available. Clicking Button again adds another Coating & Markings"
+End Sub
+
+Sub PullDataBaseBoat()
+'Button that pulls Data from A Data Base
+'Temp MsgBox
+MsgBox "This Button will show all the base models with the item descriptions and cost"
+End Sub
+
+
+Sub PullDataPropulsion()
+'Button that pulls Data from A Data Base
+'Temp MsgBox
+MsgBox "This Button will show all the Propulsion option with the item descriptions and cost. It will only show which are available. Clicking Button again Adds another Propulsion"
+End Sub
+
+Sub PullDataAccommodations()
+'Button that pulls Data from A Data Base
+'Temp MsgBox
+MsgBox "This Button will show all the Accommodations option with the item descriptions and cost. It will only show which are available. Clicking Button again Adds another Accommodations"
+End Sub
+
+Sub PullDataCommercial()
+'Button that pulls Data from A Data Base
+'Temp MsgBox
+MsgBox "This Button will show all the Commercial/Heavy Duty option with the item descriptions and cost. It will only show which are available. Clicking Button again adds another Commercial/Heavy Duty"
+End Sub
+
+Sub PrintDocument()
+'This Button Will collect all listdocumented information and create a document
+'Temp MsgBox
+MsgBox "This Button Will collect all listdocumented information and create a document"
+
+End Sub
+
+Sub inputBoxExample()
+   'Step 1: Declare the variable
+   Dim userName As String
+   'Step 2: Fill the variable
+   userName = InputBox("Please input your name.")
+   'Step 3: Output the results into cell A1
+   Range("A1").Value = userName
+End Sub
+
